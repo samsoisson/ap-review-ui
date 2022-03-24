@@ -1,7 +1,20 @@
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, {useState,useEffect} from "react";
+
 export default function Biology() {
-    return (
+  const [courseData,setCourseData]=useState({});
+  useEffect(()=> {
+    getBiology().then(response=>{
+      setCourseData(response.data);
+   })
+  console.log("page loaded");
+  },[])
+  // var courseData = {"name":"Biology","id":"123abc","hoursOfHomework":2.2};
   
+
+    return (
+ 
          <main style={{ padding: "1rem 2" }}>
         <h1>Biology</h1>
         <h2>Prerequisites:</h2>
@@ -15,14 +28,21 @@ presented. Biological systems of plants and animals are investigated. Animal dis
 this course."</p>
         <h2>Student reviews:</h2>
         <p>Class difficulty:</p>
-        <p>Teacher rating:</p>
-        
+        <p>Teacher rating:</p>        
         <p>AP test score:</p>
         <p>Final grade in class:</p>
-        <p>Hours of homework per night:</p>
+        <p>Hours of homework per night: {courseData.hoursOfHomework}</p>
         <h3><Link to="/classes">Back</Link></h3>
       </main>
    
 
     );
+  }
+
+  async function getBiology()
+  {
+    const URL = "http://localhost:8080/courses/0";
+    var response = await axios.get(URL);
+    console.log(response);
+    return response;
   }
