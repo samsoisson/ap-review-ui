@@ -22,6 +22,8 @@ function App() {
 {/* <Button/> */}
     </header>
     <Link to="/classes">Explore</Link>
+    <br />
+    <Link to="/new-class">Leave a review</Link>
     
     </div>    
   );

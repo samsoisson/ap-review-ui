@@ -10,7 +10,7 @@ export default function Biology() {
    })
   console.log("page loaded");
   },[])
-  // var courseData = {"name":"Biology","id":"123abc","hoursOfHomework":2.2};
+   var data = {"name":"Biology","id":"123abc","hoursOfHomework":2.2};
   
 
     return (

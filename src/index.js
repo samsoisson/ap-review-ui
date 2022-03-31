@@ -37,6 +37,7 @@ import German from './APClasses/German';
 import Latin from './APClasses/Latin';
 import Spanish from './APClasses/Spanish';
 import Chinese from './APClasses/Chinese';
+import NewClass from './NewClass.jsx';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -73,7 +74,7 @@ ReactDOM.render(
       <Route path="classes/physc" element={<PhysicsC />} />
       <Route path="classes/csa" element={<ComputerScienceA />} />
       <Route path="classes/csp" element={<ComputerSciencePrinciples />} />
-     
+      <Route path="new-class" element={<NewClass />}/>
 
       
     </Routes>
