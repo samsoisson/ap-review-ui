@@ -25,14 +25,21 @@ function NewClass() {
             <h3>If you took a class last year or earlier, please only leave a review for that class if the teacher still works here.</h3>
             <form onSubmit={handleSubmit}>
                 <label>Class Name: </label><br />
-                <input type="radio" value={name} onChange={e => setName(e.target.value)}></input>
-                <label>Biology</label><br />
-                <input type="radio" value={name} onChange={e => setName(e.target.value)}></input>
-                <label>Chemistry</label><br />
-                <input type="radio" value={name} onChange={e => setName(e.target.value)}></input>
+                <label>
+                <input checked={name==="Biology"} type="radio" onClick={() => setName("Biology")}/>
+                    Biology
+                    
+                </label>
+                
+                <br />
+                
+                <label>
+                <input checked={name==="Chemistry"} type="radio" onClick={() => setName("Chemistry")}/>
+                    Chemistry</label><br />
+                {/* <input type="radio" value={name} onChange={e => setName(e.target.value)}></input>
                 <label>Calculus AB</label><br />
                 <input type="radio" value={name} onChange={e => setName(e.target.value)}></input>
-                <label>Calculus BC</label><br />
+                <label>Calculus BC</label><br /> */}
                 <br />
                 <label>Class difficulty: </label><br />
                 <input type="radio" value={difficulty} onChange={e => setDifficulty(e.target.value)}></input>
@@ -107,14 +114,18 @@ function NewClass() {
 
 async function saveClass(name, difficulty)
 {
+console.log("name",name);
+console.log(difficulty);
+let body={
+    name,
+    difficulty
+}
+console.log(body);
   const URL = "http://localhost:8080/courses";
   try {
-    var response = await axios.post(URL, {
-        params: {
-            name,
-            difficulty
-        }
-    });
+    var response = await axios.post(URL, 
+    body    
+    );
     console.log(response);
     return response;  
   } catch(error){
