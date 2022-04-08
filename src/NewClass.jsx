@@ -15,95 +15,83 @@ function NewClass() {
         console.log("event", e);
         saveClass(
             name,
-            difficulty
+            difficulty,
+            teacher,
+            score,
+            grade,
+            hw
         );
     }
-
+//***UPDATE THE OTHER PARAMETERS***
     return(
         <>
             <h1>AP Review Form</h1>
             <h3>If you took a class last year or earlier, please only leave a review for that class if the teacher still works here.</h3>
             <form onSubmit={handleSubmit}>
                 <label>Class Name: </label><br />
-                <label>
-                <input checked={name==="Biology"} type="radio" onClick={() => setName("Biology")}/>
-                    Biology
-                    
-                </label>
-                
-                <br />
-                
-                <label>
-                <input checked={name==="Chemistry"} type="radio" onClick={() => setName("Chemistry")}/>
-                    Chemistry</label><br />
-                {/* <input type="radio" value={name} onChange={e => setName(e.target.value)}></input>
-                <label>Calculus AB</label><br />
-                <input type="radio" value={name} onChange={e => setName(e.target.value)}></input>
-                <label>Calculus BC</label><br /> */}
-                <br />
-                <label>Class difficulty: </label><br />
-                <input type="radio" value={difficulty} onChange={e => setDifficulty(e.target.value)}></input>
-                <label>Easy</label><br />
-                <input type="radio" value={difficulty} onChange={e => setDifficulty(e.target.value)}></input>
-                <label>Intermediate</label><br />
-                <input type="radio" value={difficulty} onChange={e => setDifficulty(e.target.value)}></input>
-                <label>Hard</label><br />
-                <input type="radio" value={difficulty} onChange={e => setDifficulty(e.target.value)}></input>
-                <label>The hardest class I've ever taken!</label><br />
-                <br />
+                <label><input checked={name==="Biology"} type="radio" onClick={() => setName("Biology")}/>Biology</label><br />
+                <label><input checked={name==="Calculus AB"} type="radio" onClick={() => setName("Calculus AB")}/>Calculus AB</label><br />
+                <label><input checked={name==="Calculus BC"} type="radio" onClick={() => setName("Calculus BC")}/>Calculus BC</label><br />
+                <label><input checked={name==="Capstone"} type="radio" onClick={() => setName("Capstone")}/>Capstone</label><br />
+                <label><input checked={name==="Chemistry"} type="radio" onClick={() => setName("Chemistry")}/>Chemistry</label><br />
+                <label><input checked={name==="Chinese"} type="radio" onClick={() => setName("Chinese")}/>Chinese</label><br />
+                <label><input checked={name==="Computer Science A"} type="radio" onClick={() => setName("Computer Science A")}/>Computer Science A</label><br />
+                <label><input checked={name==="Computer Science Principles"} type="radio" onClick={() => setName("Computer Science Principles")}/>Computer Science Principles</label><br />
+                <label><input checked={name==="English Language"} type="radio" onClick={() => setName("English Language")}/>English Language and Composition</label><br />
+                <label><input checked={name==="English Literature"} type="radio" onClick={() => setName("English Literature")}/>English Literature and Composition</label><br />
+                <label><input checked={name==="Environmental Science"} type="radio" onClick={() => setName("Environmental Science")}/>Environmental Science</label><br />
+                <label><input checked={name==="European History"} type="radio" onClick={() => setName("European History")}/>European History</label><br />
+                <label><input checked={name==="French"} type="radio" onClick={() => setName("French")}/>French</label><br />
+                <label><input checked={name==="German"} type="radio" onClick={() => setName("German")}/>German</label><br />
+                <label><input checked={name==="Human Geography"} type="radio" onClick={() => setName("Human Geography")}/>Human Geography</label><br />
+                <label><input checked={name==="Latin"} type="radio" onClick={() => setName("Latin")}/>Latin</label><br />
+                <label><input checked={name==="Macroeconomics"} type="radio" onClick={() => setName("Macroeconomics")}/>Macroeconomics</label><br />
+                <label><input checked={name==="Microeconomics"} type="radio" onClick={() => setName("Microeconomics")}/>Microeconomics</label><br />
+                <label><input checked={name==="Music Theory"} type="radio" onClick={() => setName("Music Theory")}/>Music Theory</label><br />
+                <label><input checked={name==="Physics 1"} type="radio" onClick={() => setName("Physics 1")}/>Physics 1</label><br />
+                <label><input checked={name==="Physics 2"} type="radio" onClick={() => setName("Physics 2")}/>Physics 2</label><br />
+                <label><input checked={name==="Physics C"} type="radio" onClick={() => setName("Physics C")}/>Physics C</label><br />
+                <label><input checked={name==="Psychology"} type="radio" onClick={() => setName("Psychology")}/>Psychology</label><br />
+                <label><input checked={name==="Spanish"} type="radio" onClick={() => setName("Spanish")}/>Physics 1</label><br />
+                <label><input checked={name==="Statistics"} type="radio" onClick={() => setName("Statistics")}/>Statistics</label><br />
+                <label><input checked={name==="US Government"} type="radio" onClick={() => setName("US Government")}/>US Government</label><br />
+                <label><input checked={name==="US History"} type="radio" onClick={() => setName("US History")}/>US History</label><br />
+                <label><input checked={name==="World History"} type="radio" onClick={() => setName("World History")}/>World History</label><br />
+
+                <br /><label>Class difficulty: </label><br />
+                <label><input checked={difficulty==="Easy"} type="radio" onClick={() => setDifficulty("Easy")}/>Easy</label><br />
+                <label><input checked={difficulty==="Intermediate"} type="radio" onClick={() => setDifficulty("Intermediate")}/>Intermediate</label><br />
+                <label><input checked={difficulty==="Hard"} type="radio" onClick={() => setDifficulty("Hard")}/>Hard</label><br />
+                <label><input checked={difficulty==="Hardest class"} type="radio" onClick={() => setDifficulty("Hardest class")}/>Hardest class I've ever taken!</label><br /><br/>
+
                 <label>Teacher rating: </label><br />
-                <input type="radio" value={teacher} onChange={e => setTeacher(e.target.value)}></input>
-                <label>They teach every day and do it well!</label><br />
-                <input type="radio" value={teacher} onChange={e => setTeacher(e.target.value)}></input>
-                <label>They teach every day but do so poorly.</label><br />
-                <input type="radio" value={teacher} onChange={e => setTeacher(e.target.value)}></input>
-                <label>They teach half the time and do it well!</label><br />
-                <input type="radio" value={teacher} onChange={e => setTeacher(e.target.value)}></input>
-                <label>They teach half the time and do so poorly.</label><br />
-                <input type="radio" value={teacher} onChange={e => setTeacher(e.target.value)}></input>
-                <label>They don't usually teach, but the class is self-teachable.</label><br />
-                <input type="radio" value={teacher} onChange={e => setTeacher(e.target.value)}></input>
-                <label>They don't usually teach, and the class is difficult because of this!</label><br />
-                <br />
-                <label>AP test score: </label><br />
-                <input type="radio" value={score} onChange={e => setScore(e.target.value)}></input>
-                <label>1</label><br />
-                <input type="radio" value={score} onChange={e => setScore(e.target.value)}></input>
-                <label>2</label><br />
-                <input type="radio" value={score} onChange={e => setScore(e.target.value)}></input>
-                <label>3</label><br />
-                <input type="radio" value={score} onChange={e => setScore(e.target.value)}></input>
-                <label>4</label><br />
-                <input type="radio" value={score} onChange={e => setScore(e.target.value)}></input>
-                <label>5</label><br />
-                {/* <input type="radio" value={score} onChange={e => setDifficulty(e.target.value)}></input>
-                <label>I chose not to take the AP test</label><br /> */}
-                <br />
-                <label>Final grade in class: </label><br />
-                <input type="radio" value={grade} onChange={e => setGrade(e.target.value)}></input>
-                <label>F (0-69)</label><br />
-                <input type="radio" value={grade} onChange={e => setGrade(e.target.value)}></input>
-                <label>C (70-79)</label><br />
-                <input type="radio" value={grade} onChange={e => setGrade(e.target.value)}></input>
-                <label>B- (80-84)</label><br />
-                <input type="radio" value={grade} onChange={e => setGrade(e.target.value)}></input>
-                <label>B (85-89)</label><br />
-                <input type="radio" value={grade} onChange={e => setGrade(e.target.value)}></input>
-                <label>A- (90-94)</label><br />
-                <input type="radio" value={grade} onChange={e => setGrade(e.target.value)}></input>
-                <label>A (95-100)</label><br />
-                <br />
-                <label>Hours of homework per night: </label><br />
-                <input type="radio" value={hw} onChange={e => setHw(e.target.value)}></input>
-                <label>~0 hours</label><br />
-                <input type="radio" value={hw} onChange={e => setHw(e.target.value)}></input>
-                <label>less than 1 hour</label><br />
-                <input type="radio" value={hw} onChange={e => setHw(e.target.value)}></input>
-                <label>1-2 hours</label><br />
-                <input type="radio" value={hw} onChange={e => setHw(e.target.value)}></input>
-                <label>more than 2 hours</label><br />
-                <br />
+                <label><input checked={teacher==="They teach every day and do it well!"} type="radio" onClick={() => setTeacher("They teach every day and do it well!")}/>They teach every day and do it well!</label><br />
+                <label><input checked={teacher==="They teach every day but do so poorly."} type="radio" onClick={() => setTeacher("They teach every day but do so poorly.")}/>They teach every day but do so poorly.</label><br />
+                <label><input checked={teacher==="They teach half the time and do it well!"} type="radio" onClick={() => setTeacher("They teach half the time and do it well!")}/>They teach half the time and do it well!</label><br />
+                <label><input checked={teacher==="They teach half the time and do so poorly."} type="radio" onClick={() => setTeacher("They teach half the time and do so poorly.")}/>They teach half the time and do so poorly.</label><br />
+                <label><input checked={teacher==="They don't usually teach, but the class is self-teachable."} type="radio" onClick={() => setTeacher("They don't usually teach, but the class is self-teachable.")}/>They don't usually teach, but the class is self-teachable.</label><br />
+                <label><input checked={teacher==="They don't usually teach, and the class is difficult because of this!"} type="radio" onClick={() => setTeacher("They don't usually teach, and the class is difficult because of this!")}/>They don't usually teach, and the class is difficult because of this!</label><br />
                 
+                <br /><label>AP test score: </label><br />
+                <label><input checked={score===1} type="radio" onClick={() => setScore(1)}/>1</label><br />
+                <label><input checked={score===2} type="radio" onClick={() => setScore(2)}/>2</label><br />
+                <label><input checked={score===3} type="radio" onClick={() => setScore(3)}/>3</label><br />
+                <label><input checked={score===4} type="radio" onClick={() => setScore(4)}/>4</label><br />
+                <label><input checked={score===5} type="radio" onClick={() => setScore(5)}/>5</label><br />
+               
+                <br /><label>Final grade in class: </label><br />
+                <label><input checked={grade==="A (95-100)"} type="radio" onClick={() => setGrade("A (95-100)")}/>A (95-100)</label><br />
+                <label><input checked={grade==="A- (90-94)"} type="radio" onClick={() => setGrade("A- (90-94)")}/>A- (90-94)</label><br />
+                <label><input checked={grade==="B (85-89)"} type="radio" onClick={() => setGrade("B (85-89)")}/>B (85-89)</label><br />
+                <label><input checked={grade==="B- (80-84)"} type="radio" onClick={() => setGrade("B- (80-84)")}/>B- (80-84)</label><br />
+                <label><input checked={grade==="C (70-79)"} type="radio" onClick={() => setGrade("C (70-79)")}/>C (70-79)</label><br />
+                <label><input checked={grade==="F (0-69)"} type="radio" onClick={() => setGrade("F (0-69)")}/>F (0-69)</label><br />
+               
+                <br /> <label>Hours of homework per night: </label><br />
+                <label><input checked={hw==="~0 hours"} type="radio" onClick={() => setHw("~0 hours")}/>~0 hours</label><br />
+                <label><input checked={hw==="less than 1 hour"} type="radio" onClick={() => setHw("less than 1 hour")}/>less than 1 hour</label><br />
+                <label><input checked={hw==="1-2 hours"} type="radio" onClick={() => setHw("1-2 hours")}/>1-2 hours</label><br />
+                <label><input checked={hw==="more than 2 hours"} type="radio" onClick={() => setHw("more than 2 hours")}/>more than 2 hours</label><br />
                 <button>Submit</button>
                 
             </form>
@@ -112,13 +100,17 @@ function NewClass() {
 }
 
 
-async function saveClass(name, difficulty)
+async function saveClass(name, difficulty,teacher,score,grade,hw)
 {
 console.log("name",name);
 console.log(difficulty);
 let body={
     name,
-    difficulty
+    difficulty,
+    teacher,
+    score,
+    grade,
+    hw
 }
 console.log(body);
   const URL = "http://localhost:8080/courses";

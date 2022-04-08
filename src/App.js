@@ -25,6 +25,7 @@ function App() {
     <br />
     <Link to="/new-class">Leave a review</Link>
     
+    
     </div>    
   );
 }
