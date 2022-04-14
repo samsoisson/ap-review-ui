@@ -99,9 +99,14 @@ function NewClass() {
                 <label><input checked={hw==="less than 1 hour"} type="radio" onClick={() => setHw("less than 1 hour")}/>less than 1 hour</label><br />
                 <label><input checked={hw==="1-2 hours"} type="radio" onClick={() => setHw("1-2 hours")}/>1-2 hours</label><br />
                 <label><input checked={hw==="more than 2 hours"} type="radio" onClick={() => setHw("more than 2 hours")}/>more than 2 hours</label><br /><br />
-                <Button variant="contained">Submit!</Button>
-                <button>Submit</button>
+              
+               
+                <header className = ".App-buttons">
+                  <a href="/" target="_blank">
+                  <Button onClick={handleSubmit} variant="contained">Submit!</Button>
+                  </a>
                 
+                </header>
             </form>
             </header>
       </header>

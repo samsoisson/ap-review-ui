@@ -12,7 +12,7 @@ export default function GenericCourse() {
     return (
 
          <main style={{ padding: "1rem 2" }}>
-        <h1>Computer Science A</h1>
+        <h1>{courseData.name}</h1>
         <h2>Prerequisites:</h2>
         <p>Grades 10-12</p>
         <p>Computer Science Principles</p>
@@ -36,5 +36,7 @@ prepared to take the College Board Advanced Placement Computer Science A exam."<
   }
   async function getCourseData(courseId){
     const URL = `http://localhost8080/courses/${courseId}`;
-    var response = await = 
+    var response = await axios.get(URL);
+    console.log(response);
+    return response;
   }
