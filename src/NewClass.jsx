@@ -1,6 +1,8 @@
 import react from "react";
 import axios from 'axios'
-
+import './App.css';
+import Bar from './ButtonAppBar.js';
+import Button from '@mui/material/Button';
 function NewClass() {
     const [name, setName] = react.useState("");
     const [difficulty, setDifficulty] = react.useState("");
@@ -25,10 +27,15 @@ function NewClass() {
 //***UPDATE THE OTHER PARAMETERS***
     return(
         <>
+        <header>
+        <header className="App">
+          <Bar></Bar>
+        </header>
+      <header className="Classes"> 
             <h1>AP Review Form</h1>
-            <h3>If you took a class last year or earlier, please only leave a review for that class if the teacher still works here.</h3>
+            <h3>Answer the following questions to the best of your ability.</h3>
             <form onSubmit={handleSubmit}>
-                <label>Class Name: </label><br />
+                <h3>Class Name: </h3>
                 <label><input checked={name==="Biology"} type="radio" onClick={() => setName("Biology")}/>Biology</label><br />
                 <label><input checked={name==="Calculus AB"} type="radio" onClick={() => setName("Calculus AB")}/>Calculus AB</label><br />
                 <label><input checked={name==="Calculus BC"} type="radio" onClick={() => setName("Calculus BC")}/>Calculus BC</label><br />
@@ -58,13 +65,13 @@ function NewClass() {
                 <label><input checked={name==="US History"} type="radio" onClick={() => setName("US History")}/>US History</label><br />
                 <label><input checked={name==="World History"} type="radio" onClick={() => setName("World History")}/>World History</label><br />
 
-                <br /><label>Class difficulty: </label><br />
+                <br /><h3>Class difficulty: </h3>
                 <label><input checked={difficulty==="Easy"} type="radio" onClick={() => setDifficulty("Easy")}/>Easy</label><br />
                 <label><input checked={difficulty==="Intermediate"} type="radio" onClick={() => setDifficulty("Intermediate")}/>Intermediate</label><br />
                 <label><input checked={difficulty==="Hard"} type="radio" onClick={() => setDifficulty("Hard")}/>Hard</label><br />
                 <label><input checked={difficulty==="Hardest class"} type="radio" onClick={() => setDifficulty("Hardest class")}/>Hardest class I've ever taken!</label><br /><br/>
 
-                <label>Teacher rating: </label><br />
+                <h3>Teacher rating: </h3>
                 <label><input checked={teacher==="They teach every day and do it well!"} type="radio" onClick={() => setTeacher("They teach every day and do it well!")}/>They teach every day and do it well!</label><br />
                 <label><input checked={teacher==="They teach every day but do so poorly."} type="radio" onClick={() => setTeacher("They teach every day but do so poorly.")}/>They teach every day but do so poorly.</label><br />
                 <label><input checked={teacher==="They teach half the time and do it well!"} type="radio" onClick={() => setTeacher("They teach half the time and do it well!")}/>They teach half the time and do it well!</label><br />
@@ -72,14 +79,14 @@ function NewClass() {
                 <label><input checked={teacher==="They don't usually teach, but the class is self-teachable."} type="radio" onClick={() => setTeacher("They don't usually teach, but the class is self-teachable.")}/>They don't usually teach, but the class is self-teachable.</label><br />
                 <label><input checked={teacher==="They don't usually teach, and the class is difficult because of this!"} type="radio" onClick={() => setTeacher("They don't usually teach, and the class is difficult because of this!")}/>They don't usually teach, and the class is difficult because of this!</label><br />
                 
-                <br /><label>AP test score: </label><br />
+                <br /><h3>AP test score: </h3>
                 <label><input checked={score===1} type="radio" onClick={() => setScore(1)}/>1</label><br />
                 <label><input checked={score===2} type="radio" onClick={() => setScore(2)}/>2</label><br />
                 <label><input checked={score===3} type="radio" onClick={() => setScore(3)}/>3</label><br />
                 <label><input checked={score===4} type="radio" onClick={() => setScore(4)}/>4</label><br />
                 <label><input checked={score===5} type="radio" onClick={() => setScore(5)}/>5</label><br />
                
-                <br /><label>Final grade in class: </label><br />
+                <br /><h3>Final grade in class: </h3>
                 <label><input checked={grade==="A (95-100)"} type="radio" onClick={() => setGrade("A (95-100)")}/>A (95-100)</label><br />
                 <label><input checked={grade==="A- (90-94)"} type="radio" onClick={() => setGrade("A- (90-94)")}/>A- (90-94)</label><br />
                 <label><input checked={grade==="B (85-89)"} type="radio" onClick={() => setGrade("B (85-89)")}/>B (85-89)</label><br />
@@ -87,14 +94,17 @@ function NewClass() {
                 <label><input checked={grade==="C (70-79)"} type="radio" onClick={() => setGrade("C (70-79)")}/>C (70-79)</label><br />
                 <label><input checked={grade==="F (0-69)"} type="radio" onClick={() => setGrade("F (0-69)")}/>F (0-69)</label><br />
                
-                <br /> <label>Hours of homework per night: </label><br />
+                <br /> <h3>Hours of homework per night: </h3>
                 <label><input checked={hw==="~0 hours"} type="radio" onClick={() => setHw("~0 hours")}/>~0 hours</label><br />
                 <label><input checked={hw==="less than 1 hour"} type="radio" onClick={() => setHw("less than 1 hour")}/>less than 1 hour</label><br />
                 <label><input checked={hw==="1-2 hours"} type="radio" onClick={() => setHw("1-2 hours")}/>1-2 hours</label><br />
-                <label><input checked={hw==="more than 2 hours"} type="radio" onClick={() => setHw("more than 2 hours")}/>more than 2 hours</label><br />
+                <label><input checked={hw==="more than 2 hours"} type="radio" onClick={() => setHw("more than 2 hours")}/>more than 2 hours</label><br /><br />
+                <Button variant="contained">Submit!</Button>
                 <button>Submit</button>
                 
             </form>
+            </header>
+      </header>
         </>
     )    
 }
