@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import React, {useState,useEffect} from "react";
-
+import '../App.css';
+import Bar from '../ButtonAppBar.js';
 export default function Biology() {
   const [courseData,setCourseData]=useState({});
   useEffect(()=> {
@@ -10,11 +11,15 @@ export default function Biology() {
    })
   console.log("page loaded");
   },[])
-   var data = {"name":"Biology","id":"123abc","hoursOfHomework":2.2};
+   //var data = {"name":"Biology","id":"123abc","hoursOfHomework":2.2};
   
 
     return (
- 
+      <header>
+      <header className="App">
+        <Bar></Bar>
+      </header>
+    <header className="Classes"> 
          <main style={{ padding: "1rem 2" }}>
         <h1>Biology</h1>
         <h2>Prerequisites:</h2>
@@ -33,8 +38,12 @@ this course."</p>
         <p>Final grade in class:</p>
         <p>Hours of homework per night: {courseData.hoursOfHomework}</p>
         <h3><Link to="/classes">Back</Link></h3>
+        
+       
       </main>
-   
+      <p></p>
+      </header>
+      </header>
 
     );
   }

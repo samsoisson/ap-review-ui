@@ -1,7 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';import '../App.css';
+import Bar from '../ButtonAppBar.js';
+
 export default function ComputerSciencePrinciples() {
     return (
   
+<header>
+      <header className="App">
+        <Bar></Bar>
+      </header>
+    <header className="Classes"> 
+
          <main style={{ padding: "1rem 2" }}>
         <h1>Computer Science Principles</h1>
         <h2>Prerequisites:</h2>
@@ -21,7 +29,9 @@ prepared to take the College Board Advanced Placement Computer Science exam."</p
         <p>Hours of homework per night:</p>
         <h3><Link to="/classes">Back</Link></h3>
       </main>
-   
+      <p></p><p></p><p></p>
+      </header>
+      </header>
 
     );
   }

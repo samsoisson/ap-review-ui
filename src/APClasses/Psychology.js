@@ -1,7 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';import '../App.css';
+import Bar from '../ButtonAppBar.js';
+
 export default function Psychology() {
     return (
-  
+      <header>
+      <header className="App">
+        <Bar></Bar>
+      </header>
+    <header className="Classes"> 
+
          <main style={{ padding: "1rem 2" }}>
         <h1>Psychology</h1>
         <h2>Prerequisites:</h2>
@@ -20,6 +27,9 @@ of contemporary perspectives in psychology, application of critical methods of i
         <h3><Link to="/classes">Back</Link></h3>
       </main>
    
+<p></p><p></p><p></p>
+      </header>
+      </header>
 
     );
   }

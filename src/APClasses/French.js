@@ -1,7 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';import '../App.css';
+import Bar from '../ButtonAppBar.js';
+
 export default function French() {
     return (
-  
+      <header>
+      <header className="App">
+        <Bar></Bar>
+      </header>
+    <header className="Classes"> 
+
          <main style={{ padding: "1rem 2" }}>
         <h1>French</h1>
         <h2>Prerequisites:</h2>
@@ -18,6 +25,8 @@ French Language exam. They also read and discuss various pieces of French litera
         <h3><Link to="/classes">Back</Link></h3>
       </main>
    
-
+      <p></p><p></p><p></p>
+      </header>
+      </header>
     );
   }

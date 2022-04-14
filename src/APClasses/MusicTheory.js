@@ -1,7 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';import '../App.css';
+import Bar from '../ButtonAppBar.js';
+
 export default function MusicTheory() {
     return (
-  
+      <header>
+      <header className="App">
+        <Bar></Bar>
+      </header>
+    <header className="Classes"> 
+
          <main style={{ padding: "1rem 2" }}>
         <h1>Music Theory</h1>
         <h2>Prerequisites:</h2>
@@ -20,6 +27,8 @@ of musical harmony will be emphasized."</p>
         <h3><Link to="/classes">Back</Link></h3>
       </main>
    
-
+      <p></p><p></p><p></p>
+      </header>
+</header>
     );
   }

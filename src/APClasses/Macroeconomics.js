@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
+import '../App.css';
+import Bar from '../ButtonAppBar.js';
+
 export default function Macroeconomics() {
     return (
-  
+      <header>
+      <header className="App">
+        <Bar></Bar>
+      </header>
+    <header className="Classes"> 
+
          <main style={{ padding: "1rem 2" }}>
         <h1>Macroeconomics</h1>
         <h2>Prerequisites:</h2>
@@ -21,6 +29,8 @@ will be on applying economic models, data analysis, critical thinking, independe
         <h3><Link to="/classes">Back</Link></h3>
       </main>
    
-
+      <p></p><p></p><p></p>
+      </header>
+      </header>
     );
   }

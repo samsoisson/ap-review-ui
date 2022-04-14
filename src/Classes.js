@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom';
+import './App.css';
+import Bar from './ButtonAppBar.js';
 export default function Classes() {
     return (
+      <header>
+        <header className="App">
+          <Bar></Bar>
+        </header>
+      <header className="Classes"> 
+     
       <main style={{ padding: "1rem 0" }}>
-        <Link to="/">Main Menu</Link>
+        {/* <Link to="/">Main Menu</Link> */}
         <h2>English</h2>
         <Link to="capstone">Capstone</Link><p></p>
         <Link to="english-lang">English Language</Link><p></p>
@@ -28,7 +36,7 @@ export default function Classes() {
         <Link to="phys2">Physics 2</Link><p></p>
         <Link to="physc">Physics C</Link><p></p>
         <h2>Social Studies</h2>
-        <Link to="european-history">European History</Link><p></p>
+        {/* <Link to="european-history">European History</Link><p></p> */}
         <Link to="human-geo">Human Geography</Link><p></p>
         <Link to="macro">Macroeconomics</Link><p></p>
         <Link to="micro">Microeconomics</Link><p></p>
@@ -37,6 +45,8 @@ export default function Classes() {
         <Link to="ush">US History</Link><p></p>
         <Link to="world">World History</Link><p></p>
       </main>
+      </header>
+      </header>
 
     );
   }

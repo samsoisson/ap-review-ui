@@ -1,7 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';import '../App.css';
+import Bar from '../ButtonAppBar.js';
+
 export default function USGovernment() {
     return (
-  
+      <header>
+      <header className="App">
+        <Bar></Bar>
+      </header>
+    <header className="Classes"> 
+
          <main style={{ padding: "1rem 2" }}>
         <h1>US Government and Politics</h1>
         <h2>Prerequisites:</h2>
@@ -23,7 +30,9 @@ thinking, independent study, and research."</p>
         <p>Hours of homework per night:</p>
         <h3><Link to="/classes">Back</Link></h3>
       </main>
-   
+   <p></p><p></p><p></p>
+   </header>
+   </header>
 
     );
   }

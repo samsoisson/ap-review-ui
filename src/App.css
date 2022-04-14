@@ -1,17 +1,30 @@
+
 .App {
   text-align: center;
-  color:#0c94ac
+  color:#0cac5c
 }
 
 .App-header {
-  background-color: #0c94ac;
+  background-color: #02ffea;
   min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(15.8px + 10vmin);
-  color: rgb(153, 28, 111);
+  color: rgb(15, 28, 111);
+  font-family: Fira Sans;
+}
+
+.Classes{
+  background-color: #02ffea;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  font-size: calc(23px);
+  color: rgb(15, 28, 111);
   font-family: Fira Sans;
 }
 
@@ -27,8 +40,8 @@
 }
 
 .App-buttons {
-  background-color: #0c94ac;
-  min-height: 3vh;
+  background-color: #1131e9;
+  min-height: 6vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,19 +52,37 @@
 }
 
 .App-desc {
-  background-color: #0c94ac;
+  background-color: #1181e9;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  font-size: calc(25px);
+  color: rgb(0, 0, 0);
+  font-family: Georgia;
+}
+
+.App-link {
+  color: #202020;
+}
+
+.App-footer{
+  
+  background-color: #02ffea;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 5.34vmin);
-  color: rgb(28, 36, 153);
-  font-family: Georgia;
+  font-size: calc(30px);
+  color: rgb(15, 108, 111);
+  font-family: Fira Sans;
 }
-
-.App-link {
-  color: #61dafb;
+.Logo {
+  background-image: url(./cb.png);
+  position:fixed
+  /* animation: App-logo-spin infinite 10s linear */
 }
 
 @keyframes App-logo-spin {
@@ -59,6 +90,6 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(180deg);
+    transform: rotate(360deg);
   }
 }
