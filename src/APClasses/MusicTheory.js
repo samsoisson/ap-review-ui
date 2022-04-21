@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom';import '../App.css';
 import Bar from '../ButtonAppBar.js';
-
+import axios from 'axios';
+import React, {useState,useEffect} from "react";
 export default function MusicTheory() {
+  const [courseData,setCourseData]=useState({});
+  useEffect(()=> {
+    getClass().then(response=>{
+      console.log("response.data",response.data);
+      setCourseData(response.data);
+   })
+  console.log("page loaded");
+  },[])
+
     return (
       <header>
       <header className="App">
@@ -19,11 +29,11 @@ study of the materials of counterpoint and harmony. The study is made through li
 in application include activities in musical writing and analysis. Advanced ear training, individual sight-reading, and the study
 of musical harmony will be emphasized."</p>
         <h2>Student reviews:</h2>
-        <p>Class difficulty:</p>
-        <p>Teacher rating:</p>
-        <p>AP test score:</p>
-        <p>Final grade in class:</p>
-        <p>Hours of homework per night:</p>
+        <p>Class difficulty: {courseData.diff}</p>
+        <p>Teacher rating: {courseData.teacher}</p>
+        <p>AP test score: {courseData.ap}</p>
+        <p>Final grade in class: {courseData.grade}</p>
+        <p>Hours of homework per night: {courseData.hw}</p>
         <h3><Link to="/classes">Back</Link></h3>
       </main>
    
@@ -31,4 +41,12 @@ of musical harmony will be emphasized."</p>
       </header>
 </header>
     );
+  }
+  async function getClass()
+  {
+    var course = "musictheory";
+    const URL = `http://localhost:8080/courses/${course}`;
+    var response = await axios.get(URL);
+    console.log(response);
+    return response;
   }

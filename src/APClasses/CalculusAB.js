@@ -1,8 +1,18 @@
 import { Link } from 'react-router-dom';
 import '../App.css';
 import Bar from '../ButtonAppBar.js';
-
+import axios from 'axios';
+import React, {useState,useEffect} from "react";
 export default function CalculusAB() {
+  const [courseData,setCourseData]=useState({});
+  useEffect(()=> {
+    getClass().then(response=>{
+      console.log("response.data",response.data);
+      setCourseData(response.data);
+   })
+  console.log("page loaded");
+  },[])
+
     return (
       <header>
       <header className="App">
@@ -20,12 +30,11 @@ set forth by the College Board. Topics in AP Calculus AB include, but are not li
 integrals, and their applications; the Fundamental Theorem of Calculus; anti-differentiation techniques and applications; and
 numerical approximations to definite integrals. This course incorporates extensive use of technology." </p>
         <h2>Student reviews:</h2>
-        <p>Class difficulty:</p>
-        <p>Teacher rating:</p>
-        
-        <p>AP test score:</p>
-        <p>Final grade in class:</p>
-        <p>Hours of homework per night:</p>
+        <p>Class difficulty: {courseData.diff}</p>
+        <p>Teacher rating: {courseData.teacher}</p>
+        <p>AP test score: {courseData.ap}</p>
+        <p>Final grade in class: {courseData.grade}</p>
+        <p>Hours of homework per night: {courseData.hw}</p>
         <h3><Link to="/classes">Back</Link></h3>
       </main>
    
@@ -34,4 +43,12 @@ numerical approximations to definite integrals. This course incorporates extensi
       </header>
 
     );
+  }
+  async function getClass()
+  {
+    var course = "calcab";
+    const URL = `http://localhost:8080/courses/${course}`;
+    var response = await axios.get(URL);
+    console.log(response);
+    return response;
   }

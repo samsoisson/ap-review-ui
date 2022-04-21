@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom';import '../App.css';
 import Bar from '../ButtonAppBar.js';
-
+import axios from 'axios';
+import React, {useState,useEffect} from "react";
 export default function Psychology() {
+  const [courseData,setCourseData]=useState({});
+  useEffect(()=> {
+    getClass().then(response=>{
+      console.log("response.data",response.data);
+      setCourseData(response.data);
+   })
+  console.log("page loaded");
+  },[])
+
     return (
       <header>
       <header className="App">
@@ -19,11 +29,11 @@ of psychology, including its historical framework, methodologies, human developm
 development, cognition, learning, biological foundations, mental health, and social psychology. Coursework will include analysis
 of contemporary perspectives in psychology, application of critical methods of inquiry, conflict resolution, and performancebased assessments utilizing problem-solving or decision-making processes."</p>
         <h2>Student reviews:</h2>
-        <p>Class difficulty:</p>
-        <p>Teacher rating:</p>
-        <p>AP test score:</p>
-        <p>Final grade in class:</p>
-        <p>Hours of homework per night:</p>
+        <p>Class difficulty: {courseData.diff}</p>
+        <p>Teacher rating: {courseData.teacher}</p>
+        <p>AP test score: {courseData.ap}</p>
+        <p>Final grade in class: {courseData.grade}</p>
+        <p>Hours of homework per night: {courseData.hw}</p>
         <h3><Link to="/classes">Back</Link></h3>
       </main>
    
@@ -32,4 +42,12 @@ of contemporary perspectives in psychology, application of critical methods of i
       </header>
 
     );
+  }
+  async function getClass()
+  {
+    var course = "psych";
+    const URL = `http://localhost:8080/courses/${course}`;
+    var response = await axios.get(URL);
+    console.log(response);
+    return response;
   }

@@ -6,7 +6,8 @@ import Bar from '../ButtonAppBar.js';
 export default function Biology() {
   const [courseData,setCourseData]=useState({});
   useEffect(()=> {
-    getBiology().then(response=>{
+    getClass().then(response=>{
+      console.log("response.data",response.data);
       setCourseData(response.data);
    })
   console.log("page loaded");
@@ -32,11 +33,12 @@ chemical reactions that occur in organisms (e.g., enzymes, Krebs cycle, protein 
 presented. Biological systems of plants and animals are investigated. Animal dissection is a required part of the curriculum in
 this course."</p>
         <h2>Student reviews:</h2>
-        <p>Class difficulty:</p>
-        <p>Teacher rating:</p>        
-        <p>AP test score:</p>
-        <p>Final grade in class:</p>
-        <p>Hours of homework per night: {courseData.hoursOfHomework}</p>
+        <p>Class difficulty: {courseData.diff}</p>
+        <p>Teacher rating: {courseData.teacher}</p>        
+        <p>AP test score: {courseData.ap}</p>
+        <p>Final grade in class: {courseData.grade}</p>
+        <p>Hours of homework per night: {courseData.hw}</p>
+        {/* <p>Number of reviews: {courseData.counter}</p> */}
         <h3><Link to="/classes">Back</Link></h3>
         
        
@@ -48,9 +50,10 @@ this course."</p>
     );
   }
 
-  async function getBiology()
+  async function getClass()
   {
-    const URL = "http://localhost:8080/courses/0";
+    var course = "biology";
+    const URL = `http://localhost:8080/courses/${course}`;
     var response = await axios.get(URL);
     console.log(response);
     return response;

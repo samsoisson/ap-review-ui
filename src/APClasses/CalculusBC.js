@@ -1,7 +1,18 @@
-import { Link } from 'react-router-dom';import '../App.css';
+import { Link } from 'react-router-dom';
+import '../App.css';
 import Bar from '../ButtonAppBar.js';
-
+import axios from 'axios';
+import React, {useState,useEffect} from "react";
 export default function CalculusBC() {
+  const [courseData,setCourseData]=useState({});
+  useEffect(()=> {
+    getClass().then(response=>{
+      console.log("response.data",response.data);
+      setCourseData(response.data);
+   })
+  console.log("page loaded");
+  },[])
+
     return (
       <header>
       <header className="App">
@@ -21,12 +32,12 @@ are not limited to, parametric, polar, and vector functions, their derivatives, 
 additional antiderivative techniques; improper integrals; and sequences and series, and their approximations. This course
 incorporates extensive use of technology."</p>
         <h2>Student reviews:</h2>
-        <p>Class difficulty:</p>
-        <p>Teacher rating:</p>
+        <p>Class difficulty: {courseData.diff}</p>
+        <p>Teacher rating: {courseData.teacher}</p>
         
-        <p>AP test score:</p>
-        <p>Final grade in class:</p>
-        <p>Hours of homework per night:</p>
+        <p>AP test score: {courseData.ap}</p>
+        <p>Final grade in class: {courseData.grade}</p>
+        <p>Hours of homework per night: {courseData.hw}</p>
         <h3><Link to="/classes">Back</Link></h3>
       </main>
    
@@ -36,3 +47,12 @@ incorporates extensive use of technology."</p>
 
     );
   }
+  
+async function getClass()
+{
+  var course = "calcbc";
+  const URL = `http://localhost:8080/courses/${course}`;
+  var response = await axios.get(URL);
+  console.log(response);
+  return response;
+}

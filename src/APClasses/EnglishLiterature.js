@@ -1,9 +1,19 @@
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
+import React, {useState,useEffect} from "react";
 import '../App.css';
 import Bar from '../ButtonAppBar.js';
 
 export default function EnglishLiterature() {
+  const [courseData,setCourseData]=useState({});
+  useEffect(()=> {
+    getClass().then(response=>{
+      console.log("response.data",response.data);
+      setCourseData(response.data);
+   })
+  console.log("page loaded");
+  },[])
+
     return (
       <header>
       <header className="App">
@@ -19,11 +29,11 @@ export default function EnglishLiterature() {
         <p>"In AP English IV, the focus is on the reading, analyzing, and writing about imaginative literature (fiction, poetry, drama) from
 various time periods."</p>
         <h2>Student reviews:</h2>
-        <p>Class difficulty:</p>
-        <p>Teacher rating:</p>
-        <p>AP test score:</p>
-        <p>Final grade in class:</p>
-        <p>Hours of homework per night:</p>
+        <p>Class difficulty: {courseData.diff}</p>
+        <p>Teacher rating: {courseData.teacher}</p>
+        <p>AP test score: {courseData.ap}</p>
+        <p>Final grade in class: {courseData.grade}</p>
+        <p>Hours of homework per night: {courseData.hw}</p>
         <h3><Link to="/classes">Back</Link></h3>
       </main>
       <p></p><p></p><p></p>
@@ -31,4 +41,12 @@ various time periods."</p>
       </header>
 
     );
+  }
+  async function getClass()
+  {
+    var course = "englishlit";
+    const URL = `http://localhost:8080/courses/${course}`;
+    var response = await axios.get(URL);
+    console.log(response);
+    return response;
   }

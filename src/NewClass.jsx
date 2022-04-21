@@ -1,13 +1,14 @@
 import react from "react";
 import axios from 'axios'
+import {nameToId} from './CourseId';
 import './App.css';
 import Bar from './ButtonAppBar.js';
 import Button from '@mui/material/Button';
 function NewClass() {
     const [name, setName] = react.useState("");
-    const [difficulty, setDifficulty] = react.useState("");
+    const [diff, setDifficulty] = react.useState("");
     const [teacher, setTeacher] = react.useState("");
-    const [score, setScore] = react.useState(0);
+    const [ap, setap] = react.useState(0);
     const [grade, setGrade] = react.useState("");
     const [hw, setHw] = react.useState("");
 
@@ -17,9 +18,9 @@ function NewClass() {
         console.log("event", e);
         saveClass(
             name,
-            difficulty,
+            diff,
             teacher,
-            score,
+            ap,
             grade,
             hw
         );
@@ -47,7 +48,7 @@ function NewClass() {
                 <label><input checked={name==="English Language"} type="radio" onClick={() => setName("English Language")}/>English Language and Composition</label><br />
                 <label><input checked={name==="English Literature"} type="radio" onClick={() => setName("English Literature")}/>English Literature and Composition</label><br />
                 <label><input checked={name==="Environmental Science"} type="radio" onClick={() => setName("Environmental Science")}/>Environmental Science</label><br />
-                <label><input checked={name==="European History"} type="radio" onClick={() => setName("European History")}/>European History</label><br />
+                {/* <label><input checked={name==="European History"} type="radio" onClick={() => setName("European History")}/>European History</label><br /> */}
                 <label><input checked={name==="French"} type="radio" onClick={() => setName("French")}/>French</label><br />
                 <label><input checked={name==="German"} type="radio" onClick={() => setName("German")}/>German</label><br />
                 <label><input checked={name==="Human Geography"} type="radio" onClick={() => setName("Human Geography")}/>Human Geography</label><br />
@@ -59,17 +60,17 @@ function NewClass() {
                 <label><input checked={name==="Physics 2"} type="radio" onClick={() => setName("Physics 2")}/>Physics 2</label><br />
                 <label><input checked={name==="Physics C"} type="radio" onClick={() => setName("Physics C")}/>Physics C</label><br />
                 <label><input checked={name==="Psychology"} type="radio" onClick={() => setName("Psychology")}/>Psychology</label><br />
-                <label><input checked={name==="Spanish"} type="radio" onClick={() => setName("Spanish")}/>Physics 1</label><br />
+                <label><input checked={name==="Spanish"} type="radio" onClick={() => setName("Spanish")}/>Spanish</label><br />
                 <label><input checked={name==="Statistics"} type="radio" onClick={() => setName("Statistics")}/>Statistics</label><br />
                 <label><input checked={name==="US Government"} type="radio" onClick={() => setName("US Government")}/>US Government</label><br />
                 <label><input checked={name==="US History"} type="radio" onClick={() => setName("US History")}/>US History</label><br />
                 <label><input checked={name==="World History"} type="radio" onClick={() => setName("World History")}/>World History</label><br />
 
                 <br /><h3>Class difficulty: </h3>
-                <label><input checked={difficulty==="Easy"} type="radio" onClick={() => setDifficulty("Easy")}/>Easy</label><br />
-                <label><input checked={difficulty==="Intermediate"} type="radio" onClick={() => setDifficulty("Intermediate")}/>Intermediate</label><br />
-                <label><input checked={difficulty==="Hard"} type="radio" onClick={() => setDifficulty("Hard")}/>Hard</label><br />
-                <label><input checked={difficulty==="Hardest class"} type="radio" onClick={() => setDifficulty("Hardest class")}/>Hardest class I've ever taken!</label><br /><br/>
+                <label><input checked={diff==="Easy"} type="radio" onClick={() => setDifficulty("Easy")}/>Easy</label><br />
+                <label><input checked={diff==="Intermediate"} type="radio" onClick={() => setDifficulty("Intermediate")}/>Intermediate</label><br />
+                <label><input checked={diff==="Hard"} type="radio" onClick={() => setDifficulty("Hard")}/>Hard</label><br />
+                <label><input checked={diff==="Hardest class"} type="radio" onClick={() => setDifficulty("Hardest class")}/>Hardest class I've ever taken!</label><br /><br/>
 
                 <h3>Teacher rating: </h3>
                 <label><input checked={teacher==="They teach every day and do it well!"} type="radio" onClick={() => setTeacher("They teach every day and do it well!")}/>They teach every day and do it well!</label><br />
@@ -80,11 +81,12 @@ function NewClass() {
                 <label><input checked={teacher==="They don't usually teach, and the class is difficult because of this!"} type="radio" onClick={() => setTeacher("They don't usually teach, and the class is difficult because of this!")}/>They don't usually teach, and the class is difficult because of this!</label><br />
                 
                 <br /><h3>AP test score: </h3>
-                <label><input checked={score===1} type="radio" onClick={() => setScore(1)}/>1</label><br />
-                <label><input checked={score===2} type="radio" onClick={() => setScore(2)}/>2</label><br />
-                <label><input checked={score===3} type="radio" onClick={() => setScore(3)}/>3</label><br />
-                <label><input checked={score===4} type="radio" onClick={() => setScore(4)}/>4</label><br />
-                <label><input checked={score===5} type="radio" onClick={() => setScore(5)}/>5</label><br />
+                <label><input checked={ap===1} type="radio" onClick={() => setap(1)}/>1</label><br />
+                <label><input checked={ap===2} type="radio" onClick={() => setap(2)}/>2</label><br />
+                <label><input checked={ap===3} type="radio" onClick={() => setap(3)}/>3</label><br />
+                <label><input checked={ap===4} type="radio" onClick={() => setap(4)}/>4</label><br />
+                <label><input checked={ap===5} type="radio" onClick={() => setap(5)}/>5</label><br />
+                {/* <label><input type="radio"/>I did not take the AP test.</label><br /> */}
                
                 <br /><h3>Final grade in class: </h3>
                 <label><input checked={grade==="A (95-100)"} type="radio" onClick={() => setGrade("A (95-100)")}/>A (95-100)</label><br />
@@ -115,22 +117,24 @@ function NewClass() {
 }
 
 
-async function saveClass(name, difficulty,teacher,score,grade,hw)
+async function saveClass(name, diff,teacher,ap,grade,hw)
 {
+  var id = nameToId(name);
 console.log("name",name);
-console.log(difficulty);
+console.log(diff);
 let body={
     name,
-    difficulty,
+    diff,
     teacher,
-    score,
+    ap,
     grade,
-    hw
+    hw,
+    id
 }
 console.log(body);
-  const URL = "http://localhost:8080/courses";
+  const URL = `http://localhost:8080/courses/${id}`;
   try {
-    var response = await axios.post(URL, 
+    var response = await axios.put(URL, 
     body    
     );
     console.log(response);
